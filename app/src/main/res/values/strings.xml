@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVVM Compose</string>
+
+    <string name="general_error">Error, Please try again later!</string>
 </resources>
