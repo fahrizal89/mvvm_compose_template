@@ -1,7 +1,16 @@
 package com.fahrizal.mvvmcompose
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
-class App : Application() {
+@HiltAndroidApp
+class App : Application(){
 
+    override fun onCreate() {
+        super.onCreate()
+        initLogger()
+    }
+
+    private fun initLogger() = Timber.plant(Timber.DebugTree())
 }
