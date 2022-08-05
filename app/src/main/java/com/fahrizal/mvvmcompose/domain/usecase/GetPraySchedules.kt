@@ -2,8 +2,8 @@ package com.fahrizal.mvvmcompose.domain.usecase
 
 import com.fahrizal.mvvmcompose.data.model.PrayScheduleRequest
 import com.fahrizal.mvvmcompose.data.repository.PrayScheduleRepository
-import com.fahrizal.mvvmcompose.domain.mapper.PrayMapper.toListOfPray
-import com.fahrizal.mvvmcompose.domain.model.Pray
+import com.fahrizal.mvvmcompose.data.mapper.PrayMapper.toListOfPray
+import com.fahrizal.mvvmcompose.data.db.model.Pray
 import com.fahrizal.mvvmcompose.util.TimeUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

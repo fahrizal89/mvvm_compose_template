@@ -1,7 +1,7 @@
-package com.fahrizal.mvvmcompose.domain.mapper
+package com.fahrizal.mvvmcompose.data.mapper
 
 import com.fahrizal.mvvmcompose.data.model.PrayScheduleResponse
-import com.fahrizal.mvvmcompose.domain.model.Pray
+import com.fahrizal.mvvmcompose.data.db.model.Pray
 import com.fahrizal.mvvmcompose.util.TimeUtil
 
 object PrayMapper {
@@ -16,36 +16,36 @@ object PrayMapper {
 
             prayList.add(
                 Pray(
-                    cityName, "Fajr",
-                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.fajr))
+                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.fajr)),
+                    cityName, "Fajr"
                 )
             )
 
             prayList.add(
                 Pray(
-                    cityName, "Dhuhr",
-                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.dhuhr))
+                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.dhuhr)),
+                    cityName, "Dhuhr"
                 )
             )
 
             prayList.add(
                 Pray(
-                    cityName, "Asr",
-                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.asr))
+                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.asr)),
+                    cityName, "Asr"
                 )
             )
 
             prayList.add(
                 Pray(
-                    cityName, "Maghrib",
-                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.maghrib))
+                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.maghrib)),
+                    cityName, "Maghrib"
                 )
             )
 
             prayList.add(
                 Pray(
-                    cityName, "Isha",
-                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.isha))
+                    TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.isha)),
+                    cityName, "Isha"
                 )
             )
 
