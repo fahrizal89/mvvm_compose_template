@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(coroutineDispatcherProvider.io) {
-            getPraySchedules()
+            getPraySchedules("Jakarta")
                 .catch {
                     _uiState.value = PrayUiState.Error(R.string.general_error)
                 }
