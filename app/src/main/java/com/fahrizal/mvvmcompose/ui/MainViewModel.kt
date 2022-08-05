@@ -4,7 +4,7 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fahrizal.mvvmcompose.R
-import com.fahrizal.mvvmcompose.domain.model.Pray
+import com.fahrizal.mvvmcompose.data.db.model.Pray
 import com.fahrizal.mvvmcompose.domain.usecase.GetPraySchedules
 import com.fahrizal.mvvmcompose.ui.dispatcher.CoroutineDispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
+    coroutineDispatcherProvider: CoroutineDispatcherProvider,
     private val getPraySchedules: GetPraySchedules
 ) : ViewModel() {
 

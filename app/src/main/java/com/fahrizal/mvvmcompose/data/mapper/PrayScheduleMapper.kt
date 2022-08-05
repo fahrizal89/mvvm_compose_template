@@ -1,7 +1,7 @@
 package com.fahrizal.mvvmcompose.data.mapper
 
-import com.fahrizal.mvvmcompose.data.model.PrayScheduleResponse
 import com.fahrizal.mvvmcompose.data.db.model.Pray
+import com.fahrizal.mvvmcompose.data.model.PrayScheduleResponse
 import com.fahrizal.mvvmcompose.util.TimeUtil
 
 object PrayMapper {
@@ -17,35 +17,40 @@ object PrayMapper {
             prayList.add(
                 Pray(
                     TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.fajr)),
-                    cityName, "Fajr"
+                    cityName,
+                    "Fajr"
                 )
             )
 
             prayList.add(
                 Pray(
                     TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.dhuhr)),
-                    cityName, "Dhuhr"
+                    cityName,
+                    "Dhuhr"
                 )
             )
 
             prayList.add(
                 Pray(
                     TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.asr)),
-                    cityName, "Asr"
+                    cityName,
+                    "Asr"
                 )
             )
 
             prayList.add(
                 Pray(
                     TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.maghrib)),
-                    cityName, "Maghrib"
+                    cityName,
+                    "Maghrib"
                 )
             )
 
             prayList.add(
                 Pray(
                     TimeUtil.getTimestamp(format, dateStr.plus(" ").plus(dataItem.isha)),
-                    cityName, "Isha"
+                    cityName,
+                    "Isha"
                 )
             )
 
