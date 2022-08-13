@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,7 +27,8 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch(coroutineDispatcherProvider.io) {
             getPraySchedules("Jakarta")
-                .catch {
+                .catch { throwable ->
+                    Timber.e(throwable)
                     _uiState.value = PrayUiState.Error(R.string.general_error)
                 }
                 .collect { prayList ->

@@ -5,7 +5,6 @@ import com.fahrizal.mvvmcompose.data.db.model.Pray
 import com.fahrizal.mvvmcompose.data.model.PrayScheduleRequest
 import com.fahrizal.mvvmcompose.util.TimeUtil
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class LocalPrayScheduleEntityData @Inject constructor(
@@ -19,10 +18,7 @@ class LocalPrayScheduleEntityData @Inject constructor(
         return prayDao.getPraySchedule(prayScheduleRequest.city, from, to)
     }
 
-    fun savePraySchedules(prayList: List<Pray>): Flow<List<Pray>> {
-        return flow {
-            prayDao.insert(prayList)
-            emit(prayList)
-        }
+    suspend fun save(prayList: List<Pray>) {
+        return prayDao.insert(prayList)
     }
 }
