@@ -13,9 +13,7 @@ class GetPraySchedules @Inject constructor(
 ) {
 
     operator fun invoke(city: String): Flow<List<Pray>> {
-        val prayScheduleRequest = PrayScheduleRequest(city, getTodayDate())
-
-        return prayScheduleRepository.getPraySchedules(prayScheduleRequest)
+        return prayScheduleRepository.getPraySchedules(PrayScheduleRequest(city, getTodayDate()))
     }
 
     private fun getTodayDate() = TimeUtil.getDateFormatted(Date())
