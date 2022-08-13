@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.fahrizal.mvvmcompose.R
 import com.fahrizal.mvvmcompose.data.db.model.Pray
 import com.fahrizal.mvvmcompose.domain.usecase.GetPraySchedules
-import com.fahrizal.mvvmcompose.ui.dispatcher.CoroutineDispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    coroutineDispatcherProvider: CoroutineDispatcherProvider,
+    ioCoroutineDispatcher: CoroutineDispatcher,
     private val getPraySchedules: GetPraySchedules
 ) : ViewModel() {
 
@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor(
     val uiState: StateFlow<PrayUiState> = _uiState
 
     init {
-        viewModelScope.launch(coroutineDispatcherProvider.io) {
+        viewModelScope.launch(ioCoroutineDispatcher) {
             getPraySchedules("Jakarta")
                 .catch { throwable ->
                     Timber.e(throwable)

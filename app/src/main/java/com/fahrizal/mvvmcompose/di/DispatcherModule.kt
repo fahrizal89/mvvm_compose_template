@@ -1,11 +1,11 @@
 package com.fahrizal.mvvmcompose.di
 
-import com.fahrizal.mvvmcompose.ui.dispatcher.CoroutineDispatcherProvider
-import com.fahrizal.mvvmcompose.ui.dispatcher.RealCoroutineDispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -14,7 +14,7 @@ class DispatcherModule {
 
     @Provides
     @Singleton
-    fun providesCoroutineDispatcher(): CoroutineDispatcherProvider {
-        return RealCoroutineDispatcherProvider()
+    fun providesIoCoroutineDispatcher(): CoroutineDispatcher {
+        return Dispatchers.IO
     }
 }
