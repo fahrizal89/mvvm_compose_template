@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "pray")
-class Pray(
+data class Pray(
     @PrimaryKey val time: Long = 0,
     val city: String = "",
     val name: String,
