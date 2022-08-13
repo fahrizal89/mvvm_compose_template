@@ -17,21 +17,29 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    ioCoroutineDispatcher: CoroutineDispatcher,
+    private val ioCoroutineDispatcher: CoroutineDispatcher,
     private val getPraySchedules: GetPraySchedules
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<PrayUiState>(PrayUiState.Empty)
     val uiState: StateFlow<PrayUiState> = _uiState
 
-    init {
+    fun fetchData(city: String) {
+        //set loading when fetching data
+        _uiState.value = PrayUiState.Loading
+
+        //invoke getPraySchedules use case in the ViewModel scope
         viewModelScope.launch(ioCoroutineDispatcher) {
-            getPraySchedules("Jakarta")
+            getPraySchedules(city)
                 .catch { throwable ->
+                    //log the error
                     Timber.e(throwable)
+
+                    //show general error to user. User don't need to know exception
                     _uiState.value = PrayUiState.Error(R.string.general_error)
                 }
                 .collect { prayList ->
+                    //expose data to UI
                     _uiState.value = PrayUiState.Loaded(prayList)
                 }
         }

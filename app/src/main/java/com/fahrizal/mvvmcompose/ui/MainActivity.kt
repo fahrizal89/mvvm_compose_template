@@ -3,6 +3,7 @@ package com.fahrizal.mvvmcompose.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,10 +33,17 @@ import java.util.*
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    private val mainViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //fetch data when creating UI
+        mainViewModel.fetchData("Jakarta")
+
+        //create content
         setContent {
-            PrayScreen()
+            PrayScreen(mainViewModel)
         }
     }
 }
@@ -48,8 +56,10 @@ fun PrayScreen(mainViewModel: MainViewModel = viewModel()) {
             color = MaterialTheme.colorScheme.background
         ) {
             Column {
+                //draw title
                 Title()
 
+                //show content by UI state
                 when (val state = mainViewModel.uiState.collectAsState().value) {
                     is Loaded -> PrayList(state.prayList)
                     is Error -> ErrorDialog(state.resId)
